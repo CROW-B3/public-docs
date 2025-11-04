@@ -1,0 +1,45 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* CROW By B3 - Black, White, and Red Color Scheme */
+:root {
+  --ifm-color-primary: #dc143c;
+  --ifm-color-primary-dark: #c61236;
+  --ifm-color-primary-darker: #bb1133;
+  --ifm-color-primary-darkest: #9a0e2a;
+  --ifm-color-primary-light: #e0304e;
+  --ifm-color-primary-lighter: #e33b57;
+  --ifm-color-primary-lightest: #e85973;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(220, 20, 60, 0.1);
+  --ifm-background-color: #ffffff;
+  --ifm-navbar-background-color: #000000;
+  --ifm-footer-background-color: #000000;
+}
+
+/* Dark mode with red accents */
+[data-theme='dark'] {
+  --ifm-color-primary: #ff4757;
+  --ifm-color-primary-dark: #ff2e43;
+  --ifm-color-primary-darker: #ff1f33;
+  --ifm-color-primary-darkest: #e60019;
+  --ifm-color-primary-light: #ff606b;
+  --ifm-color-primary-lighter: #ff6f7a;
+  --ifm-color-primary-lightest: #ff9199;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 71, 87, 0.2);
+  --ifm-background-color: #0a0a0a;
+  --ifm-navbar-background-color: #000000;
+  --ifm-footer-background-color: #000000;
+}
+
+/* Force footer to always be black */
+.footer {
+  background-color: #000000 !important;
+}
+
+.footer--dark {
+  background-color: #000000 !important;
+}
