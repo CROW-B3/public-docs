@@ -13,6 +13,9 @@ This template enables you to build and deploy Python applications on Cloudflare'
 - ⚡ Serverless scaling and execution
 - 🔧 Easy to configure and deploy
 - 🚀 Fast cold starts with container optimization
+- 🔷 Hybrid TypeScript/JavaScript and Python setup
+- 🤖 Automated CI/CD with GitHub Actions
+- 🌐 Live deployment example available
 
 ## Getting Started
 
@@ -22,6 +25,7 @@ This template enables you to build and deploy Python applications on Cloudflare'
 - Docker (for building containers)
 - Cloudflare account
 - Wrangler CLI
+- Bun (package manager for build tooling)
 
 ### Installation
 
@@ -40,7 +44,7 @@ cd cloudflare-workers-containers-python-template
 pip install -r requirements.txt
 ```
 
-2. Configure your Cloudflare credentials in `wrangler.toml`
+2. Configure your Cloudflare credentials in `wrangler.jsonc`
 
 ### Development
 
@@ -95,6 +99,24 @@ Deploy full Python web applications:
 - FastAPI services
 - Django projects (with appropriate optimization)
 
+## Project Structure
+
+```
+cloudflare-workers-containers-python-template/
+├── .github/
+│   └── workflows/      # CI/CD automation pipelines
+├── .vscode/            # VS Code configuration
+├── container_src/      # Python application source code
+├── src/                # TypeScript/JavaScript worker code
+├── Dockerfile          # Container build configuration
+├── wrangler.jsonc      # Cloudflare Workers configuration
+├── tsconfig.json       # TypeScript settings
+├── package.json        # Node dependencies and scripts
+├── worker-configuration.d.ts # TypeScript type definitions
+├── .dockerignore       # Docker build exclusions
+└── bun.lock            # Bun dependency lockfile
+```
+
 ## Architecture
 
 ### Workers Containers
@@ -117,14 +139,16 @@ Workers Containers allow you to run Python code in a containerized environment a
 
 ### Wrangler Configuration
 
-Configure your worker in `wrangler.toml`:
+Configure your worker in `wrangler.jsonc`:
 
-```toml
-name = "python-worker"
-compatibility_date = "2024-01-01"
-
-[build]
-command = "docker build -t python-worker ."
+```jsonc
+{
+  "name": "python-worker",
+  "compatibility_date": "2024-01-01",
+  "build": {
+    "command": "docker build -t python-worker ."
+  }
+}
 ```
 
 ### Docker Configuration
@@ -171,9 +195,11 @@ Be aware of Cloudflare Workers Containers limitations:
 ## Resources
 
 - **Repository**: [GitHub](https://github.com/CROW-B3/cloudflare-workers-containers-python-template)
+- **Live Demo**: [cloudflare-workers-containers-python-template.bitbybit-b3.workers.dev](https://cloudflare-workers-containers-python-template.bitbybit-b3.workers.dev)
 - **Cloudflare Workers Containers Docs**: [developers.cloudflare.com](https://developers.cloudflare.com/workers/)
 - **Python Documentation**: [python.org](https://www.python.org/)
 - **Wrangler CLI**: [developers.cloudflare.com/workers/wrangler](https://developers.cloudflare.com/workers/wrangler/)
+- **License**: MIT
 
 ## Support
 

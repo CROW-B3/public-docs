@@ -10,11 +10,13 @@ This template provides a modern starter for building Cloudflare Workers applicat
 - ⚡ Fast and lightweight with Hono framework
 - 🐳 Cloudflare Workers Containers support
 - 📝 OpenAPI/Swagger documentation with Zod schema validation
-- 🔷 Full TypeScript support
+- 🔷 Full TypeScript support (75.2% of codebase)
 - 🎯 Modern ESLint configuration
 - 🎨 Code formatting with Prettier
 - 🔄 Git hooks with Husky and lint-staged
 - 🚀 Built-in dev server and deployment scripts
+- ✅ Commit message validation with commitlint
+- 🌐 Live deployment example available
 
 ## Getting Started
 
@@ -72,11 +74,18 @@ This will minify and deploy your worker to Cloudflare's edge network.
 ## Project Structure
 
 ```
-.
+cloudflare-workers-containers-hono-template/
+├── .github/              # GitHub workflows and CI/CD
+├── .husky/               # Git hooks for pre-commit checks
 ├── src/
 │   └── index.ts          # Main application entry point
-├── wrangler.toml         # Cloudflare Workers configuration
-└── package.json          # Project dependencies and scripts
+├── Dockerfile            # Container backend definition
+├── wrangler.jsonc        # Cloudflare Workers configuration
+├── tsconfig.json         # TypeScript configuration
+├── eslint.config.mts     # ESLint linting rules
+├── .prettierrc           # Code formatting rules
+├── package.json          # Project dependencies and scripts
+└── bun.lock              # Bun dependency lockfile
 ```
 
 ## Key Technologies
@@ -127,16 +136,20 @@ bun run bun:build       # Compile to standalone executable
 
 ### Wrangler Configuration
 
-Configure your worker in `wrangler.toml`:
+Configure your worker in `wrangler.jsonc`:
 
-```toml
-name = "your-worker-name"
-main = "src/index.ts"
-compatibility_date = "2024-01-01"
-
-# Add your bindings here
-[env.production]
-# Add environment-specific configuration
+```jsonc
+{
+  "name": "your-worker-name",
+  "main": "src/index.ts",
+  "compatibility_date": "2024-01-01",
+  // Add your bindings here
+  "env": {
+    "production": {
+      // Add environment-specific configuration
+    }
+  }
+}
 ```
 
 ### TypeScript Types
@@ -157,13 +170,16 @@ The template comes with pre-configured:
 - **Prettier**: Automatic code formatting
 - **Husky**: Git hooks for pre-commit checks
 - **lint-staged**: Run linters on staged files only
+- **commitlint**: Enforce conventional commit message standards
 
 ## Resources
 
 - **Repository**: [GitHub](https://github.com/CROW-B3/cloudflare-workers-containers-hono-template)
+- **Live Demo**: [cloudflare-workers-containers-hono-template.bitbybit-b3.workers.dev](https://cloudflare-workers-containers-hono-template.bitbybit-b3.workers.dev)
 - **Hono Documentation**: [hono.dev](https://hono.dev)
 - **Cloudflare Workers Docs**: [developers.cloudflare.com](https://developers.cloudflare.com/workers/)
 - **Wrangler CLI**: [developers.cloudflare.com/workers/wrangler](https://developers.cloudflare.com/workers/wrangler/)
+- **License**: MIT
 
 ## Contributing
 

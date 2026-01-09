@@ -10,11 +10,14 @@ This template enables you to deploy Next.js applications on Cloudflare's edge ne
 - ⚡ Next.js 15+ support with App Router
 - 🌐 Deploy to Cloudflare's global edge network
 - 🎨 Tailwind CSS v4 pre-configured
-- 🔷 Full TypeScript support
+- 🔷 Full TypeScript support (70.2% of codebase)
 - 🚀 Edge rendering and static optimization
 - 📦 OpenNext.js adapter for Cloudflare
 - ⚛️ React 19 compatibility
 - 🔧 Wrangler CLI integration
+- 🐳 Docker containerization support
+- 🤖 GitHub Actions CI/CD automation
+- 🌐 Live deployment example available
 
 ## Getting Started
 
@@ -23,6 +26,7 @@ This template enables you to deploy Next.js applications on Cloudflare's edge ne
 - Node.js 20+ or later
 - Cloudflare account
 - Wrangler CLI
+- Bun (recommended) or npm/pnpm
 
 ### Installation
 
@@ -48,7 +52,7 @@ bun install
 Start the Next.js development server:
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 This will start the Next.js development server with Turbopack for fast hot module replacement.
@@ -62,7 +66,7 @@ Visit [http://localhost:3000](http://localhost:3000) to see your application.
 Build and deploy your Next.js app to Cloudflare:
 
 ```bash
-npm run deploy
+bun run deploy
 ```
 
 This command will:
@@ -75,7 +79,7 @@ This command will:
 To build without deploying:
 
 ```bash
-npm run build
+bun run build
 ```
 
 ### Upload Only
@@ -83,7 +87,7 @@ npm run build
 To upload a previously built application:
 
 ```bash
-npm run upload
+bun run upload
 ```
 
 ### Preview
@@ -91,40 +95,47 @@ npm run upload
 Preview your deployment locally before publishing:
 
 ```bash
-npm run preview
+bun run preview
 ```
 
 ## Available Scripts
 
 ```bash
 # Development
-npm run dev              # Start Next.js dev server with Turbopack
+bun run dev              # Start Next.js dev server with Turbopack
 
 # Production Build
-npm run build            # Build Next.js app and OpenNext.js adapter
-npm run start            # Start production Next.js server (local)
+bun run build            # Build Next.js app and OpenNext.js adapter
+bun run start            # Start production Next.js server (local)
 
 # Cloudflare Deployment
-npm run deploy           # Build and deploy to Cloudflare
-npm run upload           # Upload built app to Cloudflare
-npm run preview          # Preview deployment locally
+bun run deploy           # Build and deploy to Cloudflare
+bun run upload           # Upload built app to Cloudflare
+bun run preview          # Preview deployment locally
 
 # Development Tools
-npm run lint             # Run Next.js linting
-npm run cf-typegen       # Generate Cloudflare binding types
+bun run lint             # Run Next.js linting
+bun run cf-typegen       # Generate Cloudflare binding types
 ```
 
 ## Project Structure
 
 ```
-.
+cloudflare-opennext-nextjs-template/
+├── .github/
+│   └── workflows/       # CI/CD automation pipelines
 ├── app/                 # Next.js App Router directory
 ├── public/              # Static assets
 ├── cloudflare-env.d.ts  # Cloudflare environment types
-├── next.config.js       # Next.js configuration
+├── next.config.ts       # Next.js configuration (TypeScript)
+├── open-next.config.ts  # OpenNext.js adapter configuration
 ├── tailwind.config.js   # Tailwind CSS configuration
-├── wrangler.toml        # Cloudflare Workers configuration
-└── package.json         # Project dependencies
+├── postcss.config.mjs   # PostCSS configuration
+├── tsconfig.json        # TypeScript configuration
+├── wrangler.jsonc       # Cloudflare Workers configuration
+├── Dockerfile           # Docker containerization
+├── package.json         # Project dependencies
+└── bun.lock             # Bun dependency lockfile
 ```
 
 ## Key Technologies
@@ -164,21 +175,33 @@ Built with React 19 for:
 
 ### Next.js Configuration
 
-Configure Next.js in `next.config.js`:
+Configure Next.js in `next.config.ts`:
 
-```javascript
+```typescript
 export default {
   // Your Next.js configuration
 }
 ```
 
+### OpenNext.js Configuration
+
+Configure the OpenNext.js adapter in `open-next.config.ts`:
+
+```typescript
+export default {
+  // OpenNext.js adapter configuration for Cloudflare
+}
+```
+
 ### Cloudflare Workers Configuration
 
-Configure Cloudflare Workers in `wrangler.toml`:
+Configure Cloudflare Workers in `wrangler.jsonc`:
 
-```toml
-name = "nextjs-app"
-compatibility_date = "2024-01-01"
+```jsonc
+{
+  "name": "nextjs-app",
+  "compatibility_date": "2024-01-01"
+}
 ```
 
 ### Tailwind CSS Configuration
@@ -186,7 +209,7 @@ compatibility_date = "2024-01-01"
 The template includes Tailwind CSS v4 with PostCSS:
 
 ```javascript
-// postcss.config.js
+// postcss.config.mjs
 export default {
   plugins: {
     '@tailwindcss/postcss': {},
@@ -205,7 +228,7 @@ wrangler secret put VARIABLE_NAME
 Generate TypeScript types for your environment:
 
 ```bash
-npm run cf-typegen
+bun run cf-typegen
 ```
 
 ## Features
@@ -259,10 +282,12 @@ Be aware of Cloudflare Workers limitations:
 ## Resources
 
 - **Repository**: [GitHub](https://github.com/CROW-B3/cloudflare-opennext-nextjs-template)
+- **Live Demo**: [cloudflare-opennext-nextjs-template.bitbybit-b3.workers.dev](https://cloudflare-opennext-nextjs-template.bitbybit-b3.workers.dev)
 - **Next.js Documentation**: [nextjs.org](https://nextjs.org/)
 - **OpenNext.js**: [opennextjs.dev](https://opennextjs.dev/)
 - **Cloudflare Workers Docs**: [developers.cloudflare.com](https://developers.cloudflare.com/workers/)
 - **Tailwind CSS**: [tailwindcss.com](https://tailwindcss.com/)
+- **License**: MIT
 
 ## Support
 

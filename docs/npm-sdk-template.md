@@ -93,6 +93,24 @@ The template comes with:
 - MIT License
 - Public access publishConfig
 - Organized source structure
+- WhiteSource dependency security scanning (.whitesource)
+
+### Project Structure
+
+```
+npm-sdk-template/
+├── .github/          # GitHub workflows and CI/CD automation
+├── .husky/           # Git hooks for pre-commit checks
+├── src/              # Source code directory
+├── package.json
+├── tsconfig.json     # TypeScript configuration
+├── eslint.config.mts # ESLint configuration
+├── commitlint.config.cjs # Commit message validation
+├── .prettierrc       # Code formatting rules
+├── .whitesource      # Dependency security scanning
+├── .bun-version      # Bun version specification
+└── bun.lock          # Bun lockfile
+```
 
 ## Publishing
 
