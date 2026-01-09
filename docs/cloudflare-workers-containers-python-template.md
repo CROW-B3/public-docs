@@ -18,7 +18,7 @@ This template enables you to build and deploy Python applications on Cloudflare'
 
 ### Prerequisites
 
-- Python 3.x
+- Python 3.8 or later
 - Docker (for building containers)
 - Cloudflare account
 - Wrangler CLI

@@ -20,7 +20,7 @@ The CROW-B3 NPM SDK Template is a comprehensive starter template for building Ty
 ### Installation
 
 ```bash
-bun install @b3-crow/npm-sdk-template
+bun add @b3-crow/npm-sdk-template
 ```
 
 ### Usage

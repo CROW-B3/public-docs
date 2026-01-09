@@ -106,6 +106,8 @@ Link the package for local development:
 }
 ```
 
+**Note:** Adjust the path `../ui-kit` based on your local directory structure. This assumes the UI kit repository is cloned in a sibling directory.
+
 For Next.js projects:
 
 ```typescript

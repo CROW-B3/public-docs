@@ -20,7 +20,7 @@ This template enables you to deploy Next.js applications on Cloudflare's edge ne
 
 ### Prerequisites
 
-- Node.js 20.0 or later
+- Node.js 20+ or later
 - Cloudflare account
 - Wrangler CLI
 
