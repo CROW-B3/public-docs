@@ -266,8 +266,8 @@ Update static content without rebuilding:
 ### Development
 
 1. **Type Safety**: Use TypeScript throughout your app
-2. **Linting**: Run linting regularly
-3. **Testing**: Test locally before deploying
+2. **Linting**: Run `<package-manager> run lint` regularly
+3. **Testing**: Test locally with `<package-manager> run preview`
 4. **Environment Variables**: Use Cloudflare secrets for sensitive data
 
 ## Limitations
