@@ -7,12 +7,12 @@ The CROW-B3 UI Kit is a modern React component library built with Framer Motion 
 A collection of beautiful animated components for hero sections and landing pages that follow CROW-B3 design standards. Built with performance in mind using Framer Motion.
 
 **Key Features:**
-- 🎨 Beautiful animated components for hero sections and landing pages
-- 🌙 Designed for dark themes with elegant gradients
-- ⚡ Built with performance in mind using Framer Motion
-- 📦 TypeScript support with full type definitions
-- 🎯 Tailwind CSS v4 compatible
-- 🔧 Easy to customize and extend
+- Beautiful animated components for hero sections and landing pages
+- Designed for dark themes with elegant gradients
+- Built with performance in mind using Framer Motion
+- TypeScript support with full type definitions
+- Tailwind CSS v4 compatible
+- Easy to customize and extend
 
 ## Getting Started
 

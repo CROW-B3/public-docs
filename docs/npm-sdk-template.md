@@ -7,13 +7,13 @@ A ready-to-go TypeScript/JavaScript SDK package starter, with linting, testing, 
 The CROW-B3 NPM SDK Template is a comprehensive starter template for building TypeScript/JavaScript SDK packages. It comes pre-configured with modern development tools, linting, formatting, and automated workflows to help you quickly bootstrap new SDK projects.
 
 **Key Features:**
-- 📦 Ready-to-publish NPM package structure
-- 🔷 TypeScript support with full type definitions
-- 🎨 ESLint and Prettier pre-configured
-- 🔄 Automated workflows with Husky and lint-staged
-- 🚀 Modern build setup with TypeScript compiler
-- ✅ Commit linting with commitlint
-- 📝 MIT License
+- Ready-to-publish NPM package structure
+- TypeScript support with full type definitions
+- ESLint and Prettier pre-configured
+- Automated workflows with Husky and lint-staged
+- Modern build setup with TypeScript compiler
+- Commit linting with commitlint
+- MIT License
 
 ## Getting Started
 

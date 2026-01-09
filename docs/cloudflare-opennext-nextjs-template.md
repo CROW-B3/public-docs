@@ -7,17 +7,17 @@ A template for deploying Next.js applications on Cloudflare using OpenNext.js ad
 This template enables you to deploy Next.js applications on Cloudflare's edge network using the OpenNext.js Cloudflare adapter. It provides a seamless way to run your Next.js apps with Cloudflare's global infrastructure, combining Next.js's powerful features with Cloudflare's edge computing capabilities.
 
 **Key Features:**
-- ⚡ Next.js 15+ support with App Router
-- 🌐 Deploy to Cloudflare's global edge network
-- 🎨 Tailwind CSS v4 pre-configured
-- 🔷 Full TypeScript support (70.2% of codebase)
-- 🚀 Edge rendering and static optimization
-- 📦 OpenNext.js adapter for Cloudflare
-- ⚛️ React 19 compatibility
-- 🔧 Wrangler CLI integration
-- 🐳 Docker containerization support
-- 🤖 GitHub Actions CI/CD automation
-- 🌐 Live deployment example available
+- Next.js 15+ support with App Router
+- Deploy to Cloudflare's global edge network
+- Tailwind CSS v4 pre-configured
+- Full TypeScript support (70.2% of codebase)
+- Edge rendering and static optimization
+- OpenNext.js adapter for Cloudflare
+- React 19 compatibility
+- Wrangler CLI integration
+- Docker containerization support
+- GitHub Actions CI/CD automation
+- Live deployment example available
 
 ## Getting Started
 
@@ -266,8 +266,8 @@ Update static content without rebuilding:
 ### Development
 
 1. **Type Safety**: Use TypeScript throughout your app
-2. **Linting**: Run `npm run lint` regularly
-3. **Testing**: Test locally with `npm run preview`
+2. **Linting**: Run linting regularly
+3. **Testing**: Test locally before deploying
 4. **Environment Variables**: Use Cloudflare secrets for sensitive data
 
 ## Limitations

@@ -7,16 +7,16 @@ A Hono-powered Cloudflare Worker template that routes requests to a serverless C
 This template provides a modern starter for building Cloudflare Workers applications using the Hono web framework. It's designed to route requests to serverless container backends via `@cloudflare/containers`, combining the power of edge computing with containerized applications.
 
 **Key Features:**
-- ⚡ Fast and lightweight with Hono framework
-- 🐳 Cloudflare Workers Containers support
-- 📝 OpenAPI/Swagger documentation with Zod schema validation
-- 🔷 Full TypeScript support (75.2% of codebase)
-- 🎯 Modern ESLint configuration
-- 🎨 Code formatting with Prettier
-- 🔄 Git hooks with Husky and lint-staged
-- 🚀 Built-in dev server and deployment scripts
-- ✅ Commit message validation with commitlint
-- 🌐 Live deployment example available
+- Fast and lightweight with Hono framework
+- Cloudflare Workers Containers support
+- OpenAPI/Swagger documentation with Zod schema validation
+- Full TypeScript support (75.2% of codebase)
+- Modern ESLint configuration
+- Code formatting with Prettier
+- Git hooks with Husky and lint-staged
+- Built-in dev server and deployment scripts
+- Commit message validation with commitlint
+- Live deployment example available
 
 ## Getting Started
 

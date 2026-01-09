@@ -7,15 +7,15 @@ A template for creating Cloudflare Workers applications using Python and Cloudfl
 This template enables you to build and deploy Python applications on Cloudflare's edge network using Workers Containers. It combines the flexibility of Python with the performance and global distribution of Cloudflare Workers.
 
 **Key Features:**
-- 🐍 Python runtime support on Cloudflare Workers
-- 🐳 Containerized Python applications at the edge
-- 🌍 Global edge deployment with low latency
-- ⚡ Serverless scaling and execution
-- 🔧 Easy to configure and deploy
-- 🚀 Fast cold starts with container optimization
-- 🔷 Hybrid TypeScript/JavaScript and Python setup
-- 🤖 Automated CI/CD with GitHub Actions
-- 🌐 Live deployment example available
+- Python runtime support on Cloudflare Workers
+- Containerized Python applications at the edge
+- Global edge deployment with low latency
+- Serverless scaling and execution
+- Easy to configure and deploy
+- Fast cold starts with container optimization
+- Hybrid TypeScript/JavaScript and Python setup
+- Automated CI/CD with GitHub Actions
+- Live deployment example available
 
 ## Getting Started
 
