@@ -140,7 +140,7 @@ export default function Hero() {
 }
 ```
 
-**First Load JS:** ~85 KB (React runtime + all components)
+**Impact:** Ships the full React runtime plus all component code, regardless of whether components need interactivity. This contributes to the measured 230 KB total JS bundle.
 
 ### Astro Approach
 
@@ -163,7 +163,7 @@ import CTAForm from '../components/CTAForm';
 </section>
 ```
 
-**First Load JS:** ~22 KB (only CTAForm hydrates immediately, AnimatedBackground deferred)
+**Impact:** Only ships JS for components that explicitly opt in. Static heading and paragraph are pure HTML. This surgical approach contributes to the measured 84 KB total JS bundle—a 63% reduction.
 
 ## Common Mistakes We Made
 
@@ -197,13 +197,53 @@ We made entire sections `client:load` because they had one interactive element b
 5. **Only use `client:only` when SSR is impossible:** Canvas, WebGL, and browser-only APIs.
 6. **Split mixed content:** Isolate interactive islands from static layout.
 
-## The End Result
+## The End Result: Real Performance Metrics
 
-After migrating from Next.js to Astro and optimizing our hydration strategy:
+After migrating from Next.js to Astro and optimizing our hydration strategy, we measured comprehensive performance improvements across build times, runtime metrics, and user experience:
 
-- **First Load JS:** Dropped from ~120 KB to ~18 KB
-- **Lighthouse Performance:** 78 → 98
-- **Time to Interactive:** Reduced by 60%
-- **Hydration errors:** Eliminated entirely
+| Category             | Metric               | Astro (feat/astro-migration) | Next.js (main)  | Better     |
+| -------------------- | -------------------- | ---------------------------- | --------------- | ---------- |
+| **Overall**          | Lighthouse Score     | **88 / 100**                 | 84 / 100        | 🚀 Astro   |
+| **Build**            | Build Time           | **6.93s**                    | 31.1s           | 🚀 Astro   |
+|                      | Build Output Size    | **Much smaller**             | ~892 MB (.next) | 🚀 Astro   |
+| **Paint Metrics**    | FCP                  | 2.7s                         | **1.1s**        | ⚡ Next.js |
+|                      | LCP                  | **2.8s**                     | 3.8s            | 🚀 Astro   |
+|                      | Speed Index          | 5.1s                         | **2.8s**        | ⚡ Next.js |
+| **Interactivity**    | TTI                  | **2.8s**                     | 3.8s            | 🚀 Astro   |
+|                      | TBT                  | **0ms**                      | 230ms           | 🚀 Astro   |
+| **Layout Stability** | CLS                  | 0                            | 0               | ⚖️ Tie     |
+| **Network**          | Total Transfer Size  | **207.63 KB**                | 368.42 KB       | 🚀 Astro   |
+|                      | Total JS Transferred | **84.06 KB**                 | 230.60 KB       | 🚀 Astro   |
+|                      | Total Requests       | 29                           | **26**          | ⚡ Next.js |
+| **JS Performance**   | JS Execution Time    | **1.6s**                     | 3.4s            | 🚀 Astro   |
+|                      | Main Thread Work     | **3.4s**                     | 8.2s            | 🚀 Astro   |
+|                      | Unused JavaScript    | **~25 KB**                   | ~69 KB          | 🚀 Astro   |
+| **DOM**              | DOM Elements         | **423**                      | 430             | 🚀 Astro   |
 
-**The takeaway:** Treat JavaScript like a tax. Pay it only when required. Astro's strength is HTML first, JS later. Lean into it.
+### Key Takeaways
+
+**Build Performance (Developer Experience):**
+- **4.5× faster builds** (6.93s vs 31.1s) — drastically improves development iteration speed
+- **Massively smaller build output** — Astro's static approach eliminates the bloat of Next.js's .next directory
+
+**JavaScript Efficiency:**
+- **63% less JavaScript transferred** (84 KB vs 230 KB) — ships only what's needed for interactivity
+- **53% faster JS execution** (1.6s vs 3.4s) — less code means faster parse and execution
+- **59% less main thread work** (3.4s vs 8.2s) — browser remains responsive during page load
+- **64% less unused JavaScript** (~25 KB vs ~69 KB) — every byte shipped has a purpose
+
+**Interactivity:**
+- **Time to Interactive (TTI) improved by 26%** (2.8s vs 3.8s) — users can interact sooner
+- **Total Blocking Time reduced to 0ms** (vs 230ms) — completely eliminated main thread blocking
+- **Largest Contentful Paint (LCP) improved by 26%** (2.8s vs 3.8s) — main content renders faster
+
+**Trade-offs:**
+- First Contentful Paint (FCP) is slower in Astro (2.7s vs 1.1s) — likely due to SSR overhead vs Next.js's aggressive pre-rendering
+- Speed Index is slower in Astro (5.1s vs 2.8s) — visual completeness takes longer, though final interactivity is faster
+
+**The Bottom Line:**
+- **Total page weight reduced by 44%** (207 KB vs 368 KB)
+- **Lighthouse score improved from 84 to 88**
+- **Hydration errors:** Eliminated entirely through explicit opt-in hydration
+
+**The takeaway:** Treat JavaScript like a tax. Pay it only when required. Astro's strength is HTML first, JS later. The numbers prove it works—less code, faster builds, better runtime performance, and a dramatically improved developer experience.
