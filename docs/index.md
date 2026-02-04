@@ -15,6 +15,11 @@ CROW is a cognitive reasoning and observation system designed to provide advance
 
 This documentation site contains all the information you need to understand, use, and integrate with the CROW project.
 
+### Documentation Sections
+
+- **[Open Source Projects](./open-source.md)** - Explore our open source NPM packages, developer tools, and demo applications
+- **[UI Kit](./ui-kit.md)** - Modern React component library with animations and dark theme support
+
 ### Navigation
 
 Use the sidebar on the left to browse through different sections of the documentation.
