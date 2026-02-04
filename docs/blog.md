@@ -165,7 +165,6 @@ graph TD;
 - **Expressive Code**: Advanced syntax highlighting with line numbers and collapsible sections
 - **Mermaid**: Diagram and chart generation
 - **Rehype KaTeX**: Mathematical notation support
-- **Remark Emoji**: Emoji support in markdown
 - **Rehype External Links**: Enhanced external link handling
 
 ### React Integration
