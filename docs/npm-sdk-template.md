@@ -31,98 +31,26 @@ import {} from '@b3-crow/npm-sdk-template';
 
 ## Development
 
-### Prerequisites
-
-- Bun 1.1.0 or later
-
 ### Setup
-
-Clone the template repository:
 
 ```bash
 git clone https://github.com/CROW-B3/npm-sdk-template.git
 cd npm-sdk-template
-```
-
-Install dependencies:
-
-```bash
 bun install
 ```
 
-### Common Commands
-
-```bash
-# Build the package
-bun build
-
-# Lint code
-bun lint
-
-# Fix linting issues
-bun lint:fix
-
-# Format code
-bun format
-```
+Common commands: `bun build`, `bun lint`, `bun format`
 
 ### Development Workflow
 
-1. Make your changes to the source files in the `src/` directory
+1. Make changes to source files in `src/` directory
 2. Run `bun build` to compile TypeScript to JavaScript
-3. Use `bun lint` to check for code quality issues
-4. Use `bun format` to format your code
-5. Commit your changes (commits are automatically linted via Husky)
+3. Use `bun lint` and `bun format` for code quality
+4. Commit changes (automatically validated via Husky)
 
 ## Features
 
-### Pre-configured Tools
-
-- **TypeScript**: Full TypeScript support for type-safe development
-- **ESLint**: Code linting with @antfu/eslint-config
-- **Prettier**: Consistent code formatting
-- **Husky**: Git hooks for automated checks
-- **lint-staged**: Run linters on staged files
-- **commitlint**: Enforce conventional commit messages
-
-### Package Configuration
-
-The template comes with:
-- Proper package.json structure for NPM publishing
-- GitHub repository configuration
-- MIT License
-- Public access publishConfig
-- Organized source structure
-- WhiteSource dependency security scanning (.whitesource)
-
-### Project Structure
-
-```
-npm-sdk-template/
-├── .github/          # GitHub workflows and CI/CD automation
-├── .husky/           # Git hooks for pre-commit checks
-├── src/              # Source code directory
-├── package.json
-├── tsconfig.json     # TypeScript configuration
-├── eslint.config.mts # ESLint configuration
-├── commitlint.config.cjs # Commit message validation
-├── .prettierrc       # Code formatting rules
-├── .whitesource      # Dependency security scanning
-├── .bun-version      # Bun version specification
-└── bun.lock          # Bun lockfile
-```
-
-## Publishing
-
-The package is set up for easy publishing to NPM:
-
-```bash
-# Build the package
-bun build
-
-# Publish to NPM (requires authentication)
-npm publish
-```
+Pre-configured with TypeScript, ESLint, Prettier, Husky, lint-staged, and commitlint for modern SDK development.
 
 ## Resources
 

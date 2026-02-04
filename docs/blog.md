@@ -38,24 +38,10 @@ The CROW Engineering Blog (blog.crowai.dev) is a modern, content-focused blog pl
 
 ### Installation
 
-Clone the repository:
-
 ```bash
 git clone https://github.com/CROW-B3/blog.crowai.dev.git
 cd blog.crowai.dev
-```
-
-Install dependencies:
-
-```bash
 npm install
-```
-
-### Development
-
-Start the development server:
-
-```bash
 npm run dev
 ```
 
@@ -63,21 +49,10 @@ Visit [http://localhost:4321](http://localhost:4321) to view the blog.
 
 ## Available Scripts
 
-```bash
-# Development
-npm run dev              # Start Astro dev server
-npm run start            # Alias for dev
-
-# Production Build
-npm run build            # Type check and build
-npm run preview          # Preview production build
-
-# Code Quality
-npm run prettier         # Format code with Prettier
-
-# Utilities
-npm run astro            # Run Astro CLI commands
-```
+- `npm run dev` - Start Astro dev server
+- `npm run build` - Type check and build
+- `npm run preview` - Preview production build
+- `npm run prettier` - Format code with Prettier
 
 ## Project Structure
 
@@ -101,7 +76,7 @@ blog.crowai.dev/
 
 ### Writing Blog Posts
 
-Create new blog posts in the `src/content/` directory:
+Create new blog posts in `src/content/` directory with frontmatter:
 
 ```mdx
 ---
@@ -117,46 +92,7 @@ Your content here with full MDX support.
 
 ### MDX Features
 
-Use MDX to include interactive components:
-
-```mdx
-import { CustomComponent } from '../components/CustomComponent';
-
-# Blog Post
-
-Regular markdown content.
-
-<CustomComponent prop="value" />
-
-More markdown content.
-```
-
-### Code Highlighting
-
-Syntax highlighting with Expressive Code:
-
-````markdown
-```typescript
-// Your code here
-function example() {
-  return "highlighted";
-}
-```
-````
-
-### Diagrams
-
-Create diagrams with Mermaid:
-
-````markdown
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-```
-````
+MDX allows importing and using React components directly in markdown. Code highlighting is supported via Expressive Code, and diagrams can be created using Mermaid syntax. See the [Astro MDX documentation](https://docs.astro.build/en/guides/markdown-content/) for details.
 
 ## Features
 
@@ -169,31 +105,13 @@ graph TD;
 
 ### React Integration
 
-Integrate React components within Astro pages:
-
-```astro
----
-import { ReactComponent } from '../components/ReactComponent';
----
-
-<ReactComponent client:load />
-```
-
-### RSS Feed
-
-Automatic RSS feed generation for blog subscribers.
+React components can be integrated within Astro pages using the `client:load` directive.
 
 ### SEO Optimization
 
-Built-in SEO features:
-- Sitemap generation
-- Meta tags
-- Open Graph support
-- Structured data
+Built-in SEO features include sitemap generation, meta tags, Open Graph support, and structured data.
 
 ## Development Workflow
-
-### Adding New Posts
 
 1. Create a new MDX file in `src/content/blog/`
 2. Add frontmatter metadata
@@ -201,17 +119,7 @@ Built-in SEO features:
 4. Preview locally with `npm run dev`
 5. Commit and push to deploy
 
-### Code Quality
-
-Pre-commit hooks ensure code quality:
-
-```bash
-# Format code
-npm run prettier
-
-# Lint staged files (automatic on commit)
-npm run lint-staged
-```
+Pre-commit hooks ensure code quality with automated formatting and linting.
 
 ## Deployment
 
@@ -233,42 +141,7 @@ npm run preview
 
 ## Configuration
 
-### Astro Configuration
-
-Customize Astro in `astro.config.mjs`:
-
-```javascript
-export default {
-  // Your Astro configuration
-}
-```
-
-### Tailwind Configuration
-
-Customize styling in `tailwind.config.js`:
-
-```javascript
-export default {
-  // Your Tailwind configuration
-}
-```
-
-### Prettier Configuration
-
-Code formatting rules in `package.json`:
-
-```json
-{
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "plugins": [
-      "prettier-plugin-astro",
-      "prettier-plugin-tailwindcss"
-    ]
-  }
-}
-```
+Customize Astro in `astro.config.mjs`, styling in `tailwind.config.js`, and formatting rules are defined in `package.json` under the `prettier` key.
 
 ## Resources
 
