@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: UI Kit
+---
+
 # UI Kit
 
 The CROW-B3 UI Kit is a modern React component library built with Framer Motion for smooth animations and designed for dark-themed web applications.

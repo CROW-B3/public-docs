@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Rogue Store
+---
+
 # Rogue Store
 
 A modern e-commerce storefront built with Next.js 15, React 19, and Tailwind CSS v4, serving as a demonstration and test client for the CROW-B3 tracking SDK.

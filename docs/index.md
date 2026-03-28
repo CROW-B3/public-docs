@@ -1,37 +1,48 @@
 ---
 sidebar_position: 1
 slug: /
+title: CROW Developer Documentation
 ---
 
-# CROW Public Documentation
+# CROW Developer Documentation
 
-Welcome to the **public documentation** for **CROW** (Cognitive Reasoning Observation Watcher) by **B3**.
+:::info Source-Available
+CROW is **source-available**. The entire platform — 20+ microservices, 3 frontend clients, SDKs, CLI tools, and AI protocol servers — is available for anyone to use, study, fork, and self-host. The project is **not actively maintained**; there is no guaranteed support, updates, or bug fixes. Community contributions are welcome.
+:::
 
-## About CROW
+**CROW** (Cognitive Reasoning Observation Watcher) is an AI-powered customer intelligence platform that collects behavioral data from multiple channels, processes it through AI pipelines, and delivers actionable insights. Built by **B3**, CROW gives businesses a unified view of how customers interact with their products across web, physical retail, and social media.
 
-CROW is a cognitive reasoning and observation system designed to provide advanced monitoring and analysis capabilities. This public documentation serves as a guide for users and developers working with CROW.
+CROW captures raw interaction data, enriches it with AI-generated analysis (behavioral patterns, session summaries, product understanding), and exposes everything through a developer-friendly API. Whether you are building a dashboard, training a recommendation model, or connecting an AI agent, CROW provides the data layer.
 
-## Getting Started
+---
 
-This documentation site contains all the information you need to understand, use, and integrate with the CROW project.
+## Data Channels
 
-### Documentation Sections
+CROW ingests customer interaction data from three sources:
 
-- **[Open Source Projects](./open-source.md)** - Explore our open source NPM packages, developer tools, and demo applications
-- **[UI Kit](./ui-kit.md)** - Modern React component library with animations and dark theme support
+| Channel | What it captures | Integration |
+|---------|-----------------|-------------|
+| **Web SDK** | Page views, clicks, scroll depth, rage clicks, e-commerce events, session replays | JavaScript SDK installed on your site |
+| **CCTV CLI** | Camera frames from physical retail locations via RTSP streams | CLI tool running on edge hardware |
+| **Social Collector** | Brand mentions, reviews, and social conversations across platforms | Configured through the CROW dashboard |
 
-### Navigation
+## AI Protocols
 
-Use the sidebar on the left to browse through different sections of the documentation.
+CROW exposes your organization's data to AI agents through two standard protocols:
 
-### Contributing to Public Documentation
+| Protocol | Use case | Endpoint |
+|----------|----------|----------|
+| **MCP Server** | Connect CROW to Claude Desktop, Cursor, or any MCP-compatible client | `https://mcp.crowai.dev/mcp` |
+| **A2A Protocol** | Agent-to-agent communication following Google's A2A v0.3.0 spec | `https://a2a.crowai.dev/a2a/jsonrpc` |
 
-To contribute to this public documentation:
+---
 
-1. Edit markdown files in the `docs/` directory
-2. The site will automatically rebuild with your changes
-3. All documentation is version-controlled with the project
+## Quick Links
 
-## Need Help?
-
-If you have questions or need support, please reach out to the B3 team or check our community resources.
+- **[Getting Started](./getting-started.md)** -- Sign up, get your API key, and send your first event in minutes.
+- **[Web SDK Integration](./integrations/web-sdk.md)** -- Install the JavaScript SDK and start tracking user behavior.
+- **[CCTV CLI Integration](./integrations/cctv-cli.md)** -- Sample RTSP camera frames from physical retail locations.
+- **[Social Collector](./integrations/social-webhook.md)** -- Configure social media data collection for your organization.
+- **[MCP Server](./integrations/mcp-server.md)** -- Connect CROW data to Claude Desktop and other MCP clients.
+- **[A2A Protocol](./integrations/a2a-protocol.md)** -- Build agent-to-agent workflows with CROW.
+- **[Source Availability](./open-source.md)** -- Explore the full CROW platform, self-host it, or fork it for your own use.
