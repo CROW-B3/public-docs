@@ -4,184 +4,62 @@ sidebar_position: 2
 
 # Open Source Projects
 
-CROW By B3 maintains several open source projects and developer tools. All projects are available on [GitHub](https://github.com/CROW-B3) under the MIT license unless otherwise specified.
+CROW by B3 maintains a growing collection of open-source NPM packages, developer tools, Cloudflare templates, and demo applications. All projects are available on [GitHub](https://github.com/CROW-B3).
 
 ## NPM Packages
 
-### UI Kit
-
-A modern React component library built with Framer Motion and Tailwind CSS v4, designed for dark-themed web applications.
-
-**Features:**
-- Beautiful animated components for hero sections and landing pages
-- Built with performance in mind using Framer Motion
-- TypeScript support with full type definitions
-- Tailwind CSS v4 compatible
-- Easy to customize and extend
-
-**Installation:**
-```bash
-bun add @b3-crow/ui-kit
-# or
-pnpm add @b3-crow/ui-kit
-```
-
-**Resources:**
-- **NPM Package**: [`@b3-crow/ui-kit`](https://www.npmjs.com/package/@b3-crow/ui-kit)
-- **GitHub Repository**: [CROW-B3/ui-kit](https://github.com/CROW-B3/ui-kit)
-- **License**: MIT
-- **[Full Documentation](./ui-kit.md)**
-
-### Website Hook SDK
-
-A lightweight JavaScript/TypeScript SDK for capturing user interactions on web pages and sending them into the CROW analytics pipeline.
-
-**Features:**
-- Lightweight and performant client-side tracking
-- TypeScript support
-- Captures pageviews, clicks, and custom events
-- Integrates with CROW's analytics infrastructure
-- Simple integration with any web application
-
-**Installation:**
-```bash
-bun install @b3-crow/website-hook-sdk
-# or
-pnpm add @b3-crow/website-hook-sdk
-```
-
-**Basic Usage:**
-```typescript
-import { CrowTracker } from '@b3-crow/website-hook-sdk';
-
-const tracker = new CrowTracker({
-  apiKey: 'your-api-key',
-  endpoint: 'https://your-endpoint.com'
-});
-
-// Track pageview
-tracker.trackPageview();
-
-// Track custom event
-tracker.trackEvent('button_click', { button_id: 'signup' });
-```
-
-**Resources:**
-- **NPM Package**: [`@b3-crow/website-hook-sdk`](https://www.npmjs.com/package/@b3-crow/website-hook-sdk)
-- **GitHub Repository**: [CROW-B3/website-hook-sdk](https://github.com/CROW-B3/website-hook-sdk)
-- **License**: MIT
-- **Blog Post**: [Website Hook SDK Evolution](https://blog.crowai.dev/website-hook-sdk-evolution)
+| Package | Description | NPM |
+|---|---|---|
+| [`@b3-crow/ui-kit`](./ui-kit.md) | React component library with Framer Motion animations and dark-theme design | [![npm](https://img.shields.io/npm/v/@b3-crow/ui-kit)](https://www.npmjs.com/package/@b3-crow/ui-kit) |
+| [`@b3-crow/website-hook-sdk`](./website-hook-sdk.md) | Lightweight SDK for capturing web interactions and sending them into the CROW pipeline | [![npm](https://img.shields.io/npm/v/@b3-crow/website-hook-sdk)](https://www.npmjs.com/package/@b3-crow/website-hook-sdk) |
 
 ## Developer Tools
 
-### NPM SDK Template
+| Repository | Description |
+|---|---|
+| [cctv-cli](./cctv-cli.md) | Bun CLI for sampling RTSP feeds and streaming frames to CROW's edge ingest service |
+| [local-dev](./local-dev.md) | Clone, sync, and manage all CROW repos with a single command |
+| [npm-sdk-template](./npm-sdk-template.md) | Ready-to-publish TypeScript SDK starter with CI/CD and lint pre-configured |
 
-A template repository for creating NPM packages with TypeScript, ESLint, Prettier, and automated workflows.
+## AI & Agent Integrations
 
-**Features:**
-- TypeScript configuration optimized for library development
-- ESLint and Prettier pre-configured with best practices
-- Husky pre-commit hooks for code quality
-- GitHub Actions workflows for CI/CD
-- Ready for publishing to NPM
+| Repository | Description |
+|---|---|
+| [mcp-service](./mcp-service.md) | Model Context Protocol server exposing CROW tools to AI assistants (Claude, Cursor, etc.) |
+| [a2a-service](./a2a-service.md) | Agent-to-Agent JSON-RPC service for autonomous agent interoperability |
+| [pattern-recognition-poc](./pattern-recognition-poc.md) | POC for AI-powered CCTV behavior analysis using MediaPipe and Gemini |
 
-**Resources:**
-- **GitHub Repository**: [CROW-B3/npm-sdk-template](https://github.com/CROW-B3/npm-sdk-template)
-- **License**: MIT
+## Cloudflare Templates
 
-### Local Dev
+Opinionated, ready-to-deploy starters for Cloudflare's edge platform.
 
-A developer tool to clone and sync all CROW-B3 repositories with a single command.
+| Repository | Description | Live Demo |
+|---|---|---|
+| [cloudflare-opennext-nextjs-template](./cloudflare-opennext-nextjs-template.md) | Next.js 15 + OpenNext.js on Cloudflare Workers | [Demo](https://cloudflare-opennext-nextjs-template.bitbybit-b3.workers.dev) |
+| [cloudflare-workers-containers-hono-template](./cloudflare-workers-containers-hono-template.md) | Hono worker routing to a serverless container backend | [Demo](https://cloudflare-workers-containers-hono-template.bitbybit-b3.workers.dev) |
+| [cloudflare-workers-containers-python-template](./cloudflare-workers-containers-python-template.md) | Python app running in a Cloudflare Workers Container | [Demo](https://cloudflare-workers-containers-python-template.bitbybit-b3.workers.dev) |
+| [cloudflare-workers-containers-go-template](./cloudflare-workers-containers-go-template.md) | Go app running in a Cloudflare Workers Container | [Demo](https://cloudflare-workers-containers-go-template.bitbybit-b3.workers.dev) |
 
-**Features:**
-- Clone all CROW-B3 repositories at once
-- Sync repositories with upstream changes
-- Smart dependency installation
-- Configurable repository selection
+## Demo Applications & Blog
 
-**Installation:**
-```bash
-git clone https://github.com/CROW-B3/local-dev.git
-cd local-dev
-bun install
-bun run clone
-```
-
-**Resources:**
-- **GitHub Repository**: [CROW-B3/local-dev](https://github.com/CROW-B3/local-dev)
-
-## Demo Applications
-
-### Rogue Store
-
-A modern e-commerce storefront built with Next.js 15, React 19, and Tailwind CSS v4. Serves as a test bed for CROW integrations and demonstrations.
-
-**Tech Stack:**
-- Next.js 15 with App Router
-- React 19 and TypeScript
-- Tailwind CSS v4
-- Radix UI components
-- Zustand for state management
-- Framer Motion animations
-- Playwright E2E testing
-
-**Features:**
-- Product catalog with filtering and search
-- Shopping cart with persistent storage
-- Product variants (size, color, etc.)
-- Checkout flow with order tracking
-- Fully responsive design
-- Dark mode support
-
-**Quick Start:**
-```bash
-# Using Docker
-docker run -p 3000:3000 bitbybitb3/rogue-store:latest
-
-# Or local development
-git clone https://github.com/CROW-B3/rogue-store.git
-cd rogue-store
-pnpm install
-pnpm run dev
-```
-
-**Resources:**
-- **GitHub Repository**: [CROW-B3/rogue-store](https://github.com/CROW-B3/rogue-store)
-- **Docker Hub**: [bitbybitb3/rogue-store](https://hub.docker.com/r/bitbybitb3/rogue-store)
-- **Live Demo**: Check repository for deployment URL
-
-### Web Ingest Worker
-
-A Cloudflare Worker that receives and processes events from the website-hook-sdk.
-
-**Features:**
-- Runs on Cloudflare's edge network
-- Validates and transforms incoming events
-- Stores events in Cloudflare D1
-- Queues events for AI processing
-- Low latency global distribution
-
-**Resources:**
-- **GitHub Repository**: [CROW-B3/web-ingest-worker](https://github.com/CROW-B3/web-ingest-worker)
-- **Blog Post**: [Website Hook SDK Evolution](https://blog.crowai.dev/website-hook-sdk-evolution)
+| Repository | Description | URL |
+|---|---|---|
+| [rogue-store](./rogue-store.md) | Full-stack demo clothing e-commerce app and CROW SDK test client | [rogue.crowai.dev](https://rogue.crowai.dev) |
+| [blog.crowai.dev](./blog.md) | CROW engineering blog built with Astro | [blog.crowai.dev](https://blog.crowai.dev) |
 
 ## Contributing
 
-We welcome contributions to all our open source projects! Each repository has its own contribution guidelines. Please check the individual repository README files for specific instructions.
+Contributions are welcome across all open-source repositories. General workflow:
 
-General contribution workflow:
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes with tests
+2. Create a feature branch (`git checkout -b feat/your-feature`)
+3. Make your changes with tests where applicable
 4. Run linting and formatting (`bun run lint && bun run format`)
-5. Submit a pull request
+5. Commit using [Conventional Commits](https://www.conventionalcommits.org/) format
+6. Submit a pull request
 
-## Community
-
-- **GitHub Organization**: [CROW-B3](https://github.com/CROW-B3)
-- **Engineering Blog**: [blog.crowai.dev](https://blog.crowai.dev)
-- **Public Documentation**: [crow-public-docs.pages.dev](https://crow-public-docs.pages.dev)
+Check individual repository README files for project-specific guidelines.
 
 ## License
 
-Unless otherwise specified, all CROW By B3 open source projects are released under the MIT License. See individual repositories for specific license information.
+Unless otherwise specified, all CROW by B3 open-source projects are released under the **MIT License**. See each repository for specific license information.

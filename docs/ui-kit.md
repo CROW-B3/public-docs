@@ -1,28 +1,24 @@
+---
+sidebar_position: 3
+---
+
 # UI Kit
 
-The CROW-B3 UI Kit is a modern React component library built with Framer Motion for smooth animations and designed for dark-themed web applications.
+`@b3-crow/ui-kit` is a React component library built with **Framer Motion** for smooth animations. It is designed for dark-themed web applications and ships with 40 components across seven categories.
 
-## Overview
+- **NPM**: [`@b3-crow/ui-kit`](https://www.npmjs.com/package/@b3-crow/ui-kit)
+- **GitHub**: [CROW-B3/ui-kit](https://github.com/CROW-B3/ui-kit)
+- **License**: MIT
 
-A collection of beautiful animated components for hero sections and landing pages that follow CROW-B3 design standards. Built with performance in mind using Framer Motion.
+## Installation
 
-**Key Features:**
-- Beautiful animated components for hero sections and landing pages
-- Designed for dark themes with elegant gradients
-- Built with performance in mind using Framer Motion
-- TypeScript support with full type definitions
-- Tailwind CSS v4 compatible
-- Easy to customize and extend
-
-## Getting Started
-
-### Installation
+The library requires **React 19.2.0** or later and a few peer dependencies:
 
 ```bash
 bun add @b3-crow/ui-kit react@^19.2.0 react-dom@^19.2.0 framer-motion react-icons cobe
 ```
 
-### Basic Usage
+## Basic Usage
 
 ```tsx
 import { AnimatedBackground, HeroText, TypewriterText, Subtitle } from '@b3-crow/ui-kit';
@@ -39,74 +35,86 @@ function App() {
 }
 ```
 
-## Components
+## Component Reference
 
-The UI Kit includes **40 components** organized into 7 categories:
+The UI Kit ships **40 components** across 7 categories.
 
-### Background Components (3)
+### Background (3)
 
-- **AnimatedBackground** - Animated gradient background with blurred circles
-- **Globe** - Interactive 3D globe using cobe library
-- **GradientBackground** - Radial gradient effects with customizable positioning
+| Component | Description |
+|---|---|
+| `AnimatedBackground` | Animated gradient background with blurred circles |
+| `Globe` | Interactive 3D globe powered by the `cobe` library |
+| `GradientBackground` | Radial gradient effects with customizable positioning |
 
-### Button Components (2)
+### Buttons (2)
 
-- **Button** - Customizable button with outline/solid variants and optional arrow icons
-- **CompanyPageButton** - Specialized button for company page interactions
+| Component | Description |
+|---|---|
+| `Button` | Customizable button with `outline` / `solid` variants and optional arrow icon |
+| `CompanyPageButton` | Specialised button for company-page interactions |
 
-### Card Components (10)
+### Cards (10)
 
-- **Card** - Flexible layout component for features and documentation
-- **CheckoutSummary** - Summary card for checkout flows
-- **ConnectionOption** - Card for displaying connection options
-- **InvitationDetailsCard** - Displays invitation information
-- **OrderSummaryCard** - Order summary and details display
-- **PendingInviteCard** - Shows pending invitation status
-- **PlanCard** - Subscription or pricing plan display
-- **PricingCard** - Pricing information and feature comparison
-- **RunAgentCard** - Agent execution status and controls
-- **SyncStatusCard** - Synchronization status display
+| Component | Description |
+|---|---|
+| `Card` | Flexible layout component for features and documentation |
+| `CheckoutSummary` | Checkout flow summary card |
+| `ConnectionOption` | Displays a connection option |
+| `InvitationDetailsCard` | Shows invitation details |
+| `OrderSummaryCard` | Order summary and details |
+| `PendingInviteCard` | Pending invitation status |
+| `PlanCard` | Subscription or pricing plan display |
+| `PricingCard` | Pricing information and feature comparison |
+| `RunAgentCard` | Agent execution status and controls |
+| `SyncStatusCard` | Synchronisation status display |
 
-### Display Components (4)
+### Display (4)
 
-- **CodeBlock** - Syntax-highlighted code display
-- **ConnectionStatus** - Connection state indicator
-- **Logo** - Animated logo with breathing effect
-- **PackageManagerSelector** - Package manager choice selector (npm/yarn/pnpm/bun)
+| Component | Description |
+|---|---|
+| `CodeBlock` | Syntax-highlighted code display |
+| `ConnectionStatus` | Connection state indicator |
+| `Logo` | Animated logo with breathing effect |
+| `PackageManagerSelector` | Package manager choice (npm / yarn / pnpm / bun) |
 
-### Input Components (10)
+### Inputs (10)
 
-- **ApiKeyInput** - Secure API key input field
-- **Checkbox** - Standard checkbox with label
-- **EmailTagInput** - Multi-email tag input field
-- **Input** - Basic text input field
-- **InputField** - Enhanced input with submit button
-- **NumberStepper** - Numeric input with increment/decrement
-- **PermissionToggle** - Permission toggle switch
-- **Select** - Dropdown select component
-- **TagInput** - Multi-tag input field
-- **ToggleOption** - Toggle switch option
+| Component | Description |
+|---|---|
+| `ApiKeyInput` | Secure API key input field |
+| `Checkbox` | Standard checkbox with label |
+| `EmailTagInput` | Multi-email tag input |
+| `Input` | Basic text input |
+| `InputField` | Enhanced input with submit button |
+| `NumberStepper` | Numeric input with increment/decrement controls |
+| `PermissionToggle` | Permission toggle switch |
+| `Select` | Dropdown select component |
+| `TagInput` | Multi-tag input field |
+| `ToggleOption` | Toggle switch option |
 
-### Layout Components (7)
+### Layout (7)
 
-- **Divider** - Visual content separator
-- **Footer** - Page footer with links and info
-- **FormSection** - Form section container and grouping
-- **LinkGroup** - Grouped navigation links
-- **Navbar** - Navigation bar component
-- **PageHeader** - Page title and breadcrumb header
-- **SegmentedControl** - Segmented control/tab selector
+| Component | Description |
+|---|---|
+| `Divider` | Visual content separator |
+| `Footer` | Page footer with links and info |
+| `FormSection` | Form section container |
+| `LinkGroup` | Grouped navigation links |
+| `Navbar` | Navigation bar |
+| `PageHeader` | Page title and breadcrumb header |
+| `SegmentedControl` | Segmented control / tab selector |
 
-### Typography Components (4)
+### Typography (4)
 
-- **HeroText** - Large gradient text with fade-in animation
-- **SectionLabel** - Animated bracket-styled section labels
-- **Subtitle** - Subtitle text with fade-in effect
-- **TypewriterText** - Typewriter animation with blinking cursor
+| Component | Description |
+|---|---|
+| `HeroText` | Large gradient text with fade-in animation |
+| `SectionLabel` | Animated bracket-styled section labels |
+| `Subtitle` | Subtitle text with fade-in effect |
+| `TypewriterText` | Typewriter animation with blinking cursor |
 
-## Component Usage Examples
-
-The UI kit components are designed for easy integration. Import and use them directly:
+## Usage Examples
 
 ```tsx
 import { Button, Card, Input, Navbar } from '@b3-crow/ui-kit';
@@ -114,30 +122,19 @@ import { Button, Card, Input, Navbar } from '@b3-crow/ui-kit';
 // Button with variants
 <Button variant="outline" showArrow>Get Started</Button>
 
-// Card with configuration
+// Feature card
 <Card type="feature" title="Fast Performance" description="Built for speed" />
 
-// Input with state management
+// Controlled input
 <Input placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
 
 // Navigation bar
 <Navbar logo={<Logo />} links={[{ label: 'Home', href: '/' }]} />
 ```
 
-For detailed examples and API documentation, visit the [Component Reference](https://github.com/CROW-B3/ui-kit/blob/main/docs/components.md).
-
-## Documentation
-
-The UI kit includes comprehensive documentation in the `/docs` directory of the repository:
-
-- **[Setup Guide](https://github.com/CROW-B3/ui-kit/blob/main/docs/setup.md)** - Installation and configuration
-- **[Component Reference](https://github.com/CROW-B3/ui-kit/blob/main/docs/components.md)** - Complete API documentation
-- **[Usage Examples](https://github.com/CROW-B3/ui-kit/blob/main/docs/examples.md)** - Code examples and patterns
-- **[Development Guide](https://github.com/CROW-B3/ui-kit/blob/main/docs/development.md)** - Contributing and building
-
 ## Local Development
 
-Link the package for local development:
+To link the package locally while working on both projects:
 
 ```json
 {
@@ -147,19 +144,29 @@ Link the package for local development:
 }
 ```
 
-**Note:** Adjust the path based on your local directory structure.
+For **Next.js** projects, add to `next.config.ts`:
 
-For Next.js projects, add to `next.config.ts`:
 ```typescript
 export default {
   transpilePackages: ['@b3-crow/ui-kit'],
 };
 ```
 
-Common commands: `bun install`, `bun run build`, `bun run lint`, `bun run format`
+### Build Commands
 
-## Resources
+```bash
+bun install          # Install dependencies
+bun run build        # Build the library
+bun run build:watch  # Watch mode
+bun run lint         # Lint
+bun run format       # Format
+```
 
-- **Repository**: [GitHub](https://github.com/CROW-B3/ui-kit)
-- **Package**: `@b3-crow/ui-kit`
-- **License**: MIT
+## Documentation
+
+The repository ships full in-repo docs:
+
+- **[Setup Guide](https://github.com/CROW-B3/ui-kit/blob/main/docs/setup.md)**
+- **[Component Reference](https://github.com/CROW-B3/ui-kit/blob/main/docs/components.md)**
+- **[Usage Examples](https://github.com/CROW-B3/ui-kit/blob/main/docs/examples.md)**
+- **[Development Guide](https://github.com/CROW-B3/ui-kit/blob/main/docs/development.md)**

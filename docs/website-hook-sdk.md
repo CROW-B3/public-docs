@@ -1,47 +1,81 @@
+---
+sidebar_position: 4
+---
+
 # Website Hook SDK
 
-A lightweight JavaScript/TypeScript SDK for capturing user interactions on web pages and sending them into the CROW-B3 analytics and data pipeline.
+`@b3-crow/website-hook-sdk` is a lightweight JavaScript/TypeScript SDK that captures user interactions on any web page and streams them into the CROW analytics and data pipeline.
 
-## Overview
+- **NPM**: [`@b3-crow/website-hook-sdk`](https://www.npmjs.com/package/@b3-crow/website-hook-sdk)
+- **GitHub**: [CROW-B3/website-hook-sdk](https://github.com/CROW-B3/website-hook-sdk)
+- **License**: MIT
 
-The CROW-B3 Website Hook SDK provides a simple and efficient way to track user interactions on your website. It captures events and sends them to the CROW-B3 analytics pipeline for processing and analysis.
-
-**Key Features:**
-- Lightweight and easy to integrate
-- Full TypeScript support with type definitions
-- Modern HTTP client using Ky library
-- Event tracking and analytics integration
-- ESLint and Prettier pre-configured
-- Automated workflows with Husky and lint-staged
-- Commit message validation with commitlint
-- MIT License
-
-## Getting Started
-
-### Installation
+## Installation
 
 ```bash
 bun add @b3-crow/website-hook-sdk
+# or
+pnpm add @b3-crow/website-hook-sdk
 ```
 
-### Basic Usage
+## Quick Start
 
 ```typescript
 import { WebsiteHook } from '@b3-crow/website-hook-sdk';
 
 const hook = new WebsiteHook({
   apiKey: 'your-api-key',
-  endpoint: 'https://analytics.example.com'
+  endpoint: 'https://analytics.example.com',
 });
 
-// Track events
+// Track a page view
 hook.trackPageView({ page: '/products', title: 'Products' });
+
+// Track a custom event
 hook.trackEvent({ event: 'button_click', properties: { buttonId: 'signup' } });
+
+// Track user identity
+hook.trackUser({ userId: 'user-123', email: 'user@example.com' });
+
+// Flush all buffered events
+await hook.flush();
 ```
 
-## Development
+## API Reference
 
-### Setup
+### `WebsiteHook`
+
+Main class for event tracking.
+
+**Constructor**
+
+```typescript
+new WebsiteHook(config: HookConfig)
+```
+
+| Parameter | Type | Description |
+|---|---|---|
+| `config.apiKey` | `string` | Your CROW API key |
+| `config.endpoint` | `string` | CROW ingest endpoint URL |
+
+**Methods**
+
+| Method | Signature | Description |
+|---|---|---|
+| `trackPageView` | `(data: PageViewData) => Promise<void>` | Track a page view |
+| `trackEvent` | `(data: EventData) => Promise<void>` | Track a custom event |
+| `trackUser` | `(data: UserData) => void` | Associate a user identity |
+| `flush` | `() => Promise<void>` | Flush all buffered events |
+
+## Features
+
+- **Lightweight** — minimal footprint, no heavy dependencies
+- **TypeScript** — full type definitions included
+- **Modern HTTP** — uses [Ky](https://github.com/sindresorhus/ky) with automatic retries, timeout handling, and JSON serialization
+- **Flexible** — track page views, clicks, form submissions, and any custom event
+- **Code quality** — ESLint, Prettier, Husky, lint-staged, and commitlint pre-configured
+
+## Development
 
 ```bash
 git clone https://github.com/CROW-B3/website-hook-sdk.git
@@ -49,32 +83,12 @@ cd website-hook-sdk
 bun install
 ```
 
-Common commands: `bun run build`, `bun run lint`, `bun run format`
-
-## Features
-
-Track various user interactions including page views, button clicks, form submissions, custom events, and user sessions. Built with Ky for modern HTTP requests with automatic retries, request/response interceptors, timeout handling, and JSON serialization.
-
-## API Reference
-
-### WebsiteHook
-
-Main class for tracking events.
-
-**Constructor**: `new WebsiteHook(config: HookConfig)`
-
-**Methods**:
-- `trackPageView(data: PageViewData): Promise<void>` - Track page views
-- `trackEvent(data: EventData): Promise<void>` - Track custom events
-- `trackUser(data: UserData): void` - Track user information
-- `flush(): Promise<void>` - Flush pending events
-
-## Resources
-
-- **Repository**: [GitHub](https://github.com/CROW-B3/website-hook-sdk)
-- **Package**: `@b3-crow/website-hook-sdk`
-- **License**: MIT
+| Command | Description |
+|---|---|
+| `bun run build` | Compile TypeScript |
+| `bun run lint` | Run ESLint |
+| `bun run format` | Format with Prettier |
 
 ## Contributing
 
-Contributions are welcome. Please follow the conventional commits specification for commit messages.
+Contributions are welcome. Please use [Conventional Commits](https://www.conventionalcommits.org/) for all commit messages.

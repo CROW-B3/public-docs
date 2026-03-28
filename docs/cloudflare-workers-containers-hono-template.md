@@ -1,64 +1,74 @@
-# Cloudflare Workers Containers Hono Template
+---
+sidebar_position: 12
+---
 
-A Hono-powered Cloudflare Worker template that routes requests to a serverless Container backend using Cloudflare Workers Containers.
+# Cloudflare Workers Containers — Hono Template
 
-## Overview
+`CROW-B3/cloudflare-workers-containers-hono-template` is a starter for building Cloudflare Workers applications using the **Hono** web framework, with requests routed to a serverless container backend via `@cloudflare/containers`.
 
-This template provides a modern starter for building Cloudflare Workers applications using the Hono web framework. It's designed to route requests to serverless container backends via `@cloudflare/containers`, combining the power of edge computing with containerized applications.
+- **GitHub**: [CROW-B3/cloudflare-workers-containers-hono-template](https://github.com/CROW-B3/cloudflare-workers-containers-hono-template)
+- **Live Demo**: [cloudflare-workers-containers-hono-template.bitbybit-b3.workers.dev](https://cloudflare-workers-containers-hono-template.bitbybit-b3.workers.dev)
+- **License**: MIT
 
-**Key Features:**
-- Fast and lightweight with Hono framework
-- Cloudflare Workers Containers support
-- OpenAPI/Swagger documentation with Zod schema validation
-- Full TypeScript support (75.2% of codebase)
-- Modern ESLint configuration
-- Code formatting with Prettier
-- Git hooks with Husky and lint-staged
-- Built-in dev server and deployment scripts
-- Commit message validation with commitlint
-- Live deployment example available
+## Features
+
+- **Hono** — fast, lightweight web framework with type-safe routing
+- **Cloudflare Workers Containers** — spin up serverless containers from your Worker
+- **OpenAPI / Swagger** — auto-generated API docs via Zod schema validation
+- **TypeScript** — full type safety throughout
+- **ESLint + Prettier** — pre-configured with best practices
+- **Husky + lint-staged + commitlint** — automated code quality and conventional commits
 
 ## Getting Started
-
-### Installation
 
 ```bash
 git clone https://github.com/CROW-B3/cloudflare-workers-containers-hono-template.git
 cd cloudflare-workers-containers-hono-template
 bun install
-bun run dev  # or wrangler dev
-```
-
-### Deployment
-
-```bash
-bun run deploy  # Minifies and deploys to Cloudflare's edge network
+bun run dev
 ```
 
 ## Available Scripts
 
-- `bun run dev` - Start Wrangler dev server
-- `bun run deploy` - Deploy to Cloudflare Workers (minified)
-- `bun run cf-typegen` - Generate TypeScript types for Cloudflare bindings
-- `bun run lint` / `bun run format` - Code quality tools
+| Command | Description |
+|---|---|
+| `bun run dev` | Start Wrangler dev server |
+| `bun run deploy` | Minify and deploy to Cloudflare Workers |
+| `bun run cf-typegen` | Generate TypeScript types for Cloudflare bindings |
+| `bun run lint` | Run ESLint |
+| `bun run format` | Format with Prettier |
+
+## Deployment
+
+```bash
+bun run deploy
+```
+
+This minifies your worker bundle and deploys it to Cloudflare's edge network.
 
 ## Configuration
 
-Configure your worker in `wrangler.jsonc` with your worker name, compatibility date, and bindings. Generate Cloudflare binding types with `bun run cf-typegen` to create type definitions for KV, D1, R2, and other services.
+Edit `wrangler.jsonc` to configure:
+- Worker name and compatibility date
+- Container bindings and Durable Object definitions
+- KV, R2, D1, and Queue bindings
 
-## Code Quality
+After adding or changing bindings, regenerate TypeScript types:
 
-The template includes pre-configured ESLint, Prettier, Husky git hooks, lint-staged for staged files, and commitlint for conventional commit messages.
+```bash
+bun run cf-typegen
+```
+
+## How It Works
+
+The Hono worker acts as the edge router. It receives all incoming HTTP requests, applies any middleware (auth, rate limiting, etc.), and then forwards requests to the appropriate container instance via the `@cloudflare/containers` binding. The container runs your application logic and returns a response back through the Worker.
+
+```
+Request → Cloudflare Edge → Hono Worker → Container → Response
+```
 
 ## Resources
 
-- **Repository**: [GitHub](https://github.com/CROW-B3/cloudflare-workers-containers-hono-template)
-- **Live Demo**: [cloudflare-workers-containers-hono-template.bitbybit-b3.workers.dev](https://cloudflare-workers-containers-hono-template.bitbybit-b3.workers.dev)
-- **Hono Documentation**: [hono.dev](https://hono.dev)
-- **Cloudflare Workers Docs**: [developers.cloudflare.com](https://developers.cloudflare.com/workers/)
-- **Wrangler CLI**: [developers.cloudflare.com/workers/wrangler](https://developers.cloudflare.com/workers/wrangler/)
-- **License**: MIT
-
-## Contributing
-
-Contributions are welcome! Please follow the conventional commits specification for commit messages.
+- [Hono Documentation](https://hono.dev)
+- [Cloudflare Workers Containers Docs](https://developers.cloudflare.com/workers/containers/)
+- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)

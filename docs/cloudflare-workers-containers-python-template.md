@@ -1,25 +1,24 @@
-# Cloudflare Workers Containers Python Template
+---
+sidebar_position: 13
+---
 
-A template for creating Cloudflare Workers applications using Python and Cloudflare Workers Containers.
+# Cloudflare Workers Containers — Python Template
 
-## Overview
+`CROW-B3/cloudflare-workers-containers-python-template` is a starter for running **Python** applications in Cloudflare Workers Containers — containerised Python at the global edge.
 
-This template enables you to build and deploy Python applications on Cloudflare's edge network using Workers Containers. It combines the flexibility of Python with the performance and global distribution of Cloudflare Workers.
+- **GitHub**: [CROW-B3/cloudflare-workers-containers-python-template](https://github.com/CROW-B3/cloudflare-workers-containers-python-template)
+- **Live Demo**: [cloudflare-workers-containers-python-template.bitbybit-b3.workers.dev](https://cloudflare-workers-containers-python-template.bitbybit-b3.workers.dev)
+- **License**: MIT
 
-**Key Features:**
-- Python runtime support on Cloudflare Workers
-- Containerized Python applications at the edge
+## Features
+
+- Python runtime inside a Cloudflare Workers Container
 - Global edge deployment with low latency
-- Serverless scaling and execution
-- Easy to configure and deploy
-- Fast cold starts with container optimization
-- Hybrid TypeScript/JavaScript and Python setup
-- Automated CI/CD with GitHub Actions
-- Live deployment example available
+- Hybrid TypeScript (Worker routing) + Python (container app) setup
+- GitHub Actions CI/CD workflow included
+- Docker-based container build
 
 ## Getting Started
-
-### Installation
 
 ```bash
 git clone https://github.com/CROW-B3/cloudflare-workers-containers-python-template.git
@@ -27,55 +26,47 @@ cd cloudflare-workers-containers-python-template
 pip install -r requirements.txt
 ```
 
-Configure your Cloudflare credentials in `wrangler.jsonc`.
-
-### Deployment
+Configure your Cloudflare credentials in `wrangler.jsonc`, then deploy:
 
 ```bash
-wrangler deploy  # Builds Python container, pushes to Cloudflare, deploys globally
+wrangler deploy
 ```
+
+This builds the Python Docker container, pushes it to Cloudflare, and deploys it globally.
 
 ## Architecture
 
-Workers Containers allow you to run Python code in a containerized environment at the edge. Your Python app is packaged in a Docker container, distributed to Cloudflare's global network, and executes at the nearest edge location for incoming requests.
+```
+Request → Cloudflare Edge → TypeScript Worker → Python Container → Response
+```
+
+Your Python app is packaged in a Docker container and distributed to Cloudflare's edge network. Incoming requests hit the TypeScript Worker first (for routing, auth, etc.) and are then proxied to the nearest container instance.
 
 ## Configuration
 
-Configure your worker in `wrangler.jsonc` and create a `Dockerfile` for your Python application. See the repository for example configurations.
+| File | Purpose |
+|---|---|
+| `wrangler.jsonc` | Worker name, container bindings, Durable Object definitions |
+| `Dockerfile` | Python application container definition |
+| `requirements.txt` | Python dependencies |
 
 ## Best Practices
 
-1. Minimize container size using slim Python images and essential dependencies only
-2. Keep initialization code minimal to optimize cold starts
-3. Use Docker layer caching effectively
-4. Store secrets in Cloudflare Worker environment variables
-5. Validate all incoming data
-6. Keep Python packages up to date
+1. Use slim Python base images (`python:3.12-slim`) to minimise container size
+2. Keep initialisation code minimal to reduce cold-start latency
+3. Leverage Docker layer caching — put `COPY requirements.txt` before `COPY . .`
+4. Store secrets in Cloudflare Worker environment variables, not in the image
+5. Validate all incoming request data before processing
 
 ## Limitations
 
-Be aware of Cloudflare Workers Containers limitations including CPU time per request, memory constraints, ephemeral file system, and initial container startup time.
+- CPU time limit per request (varies by Cloudflare plan)
+- Memory constraints
+- Ephemeral filesystem — use R2, D1, or KV for persistence
+- Initial container startup time on cold starts
 
 ## Resources
 
-- **Repository**: [GitHub](https://github.com/CROW-B3/cloudflare-workers-containers-python-template)
-- **Live Demo**: [cloudflare-workers-containers-python-template.bitbybit-b3.workers.dev](https://cloudflare-workers-containers-python-template.bitbybit-b3.workers.dev)
-- **Cloudflare Workers Containers Docs**: [developers.cloudflare.com](https://developers.cloudflare.com/workers/)
-- **Python Documentation**: [python.org](https://www.python.org/)
-- **Wrangler CLI**: [developers.cloudflare.com/workers/wrangler](https://developers.cloudflare.com/workers/wrangler/)
-- **License**: MIT
-
-## Support
-
-For issues and questions:
-- Check the [GitHub Issues](https://github.com/CROW-B3/cloudflare-workers-containers-python-template/issues)
-- Review Cloudflare Workers documentation
-- Join the CROW-B3 community
-
-## Contributing
-
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+- [Cloudflare Workers Containers Docs](https://developers.cloudflare.com/workers/containers/)
+- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)
+- [Python Documentation](https://www.python.org/)

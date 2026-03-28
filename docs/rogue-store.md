@@ -1,41 +1,34 @@
+---
+sidebar_position: 15
+---
+
 # Rogue Store
 
-A modern e-commerce storefront built with Next.js 15, React 19, and Tailwind CSS v4, serving as a demonstration and test client for the CROW-B3 tracking SDK.
+**Rogue Store** is a full-stack demo clothing e-commerce site built with Next.js 15, React 19, and Tailwind CSS v4. It serves as the primary test client for the CROW-B3 tracking SDK, enabling realistic user-interaction flows, event capture, and analytics pipeline validation.
 
-## Overview
-
-Rogue Store is a full-stack demo clothing e-commerce site used to demonstrate realistic user-interaction flows, event capture, and analytics for the CROW-B3 pipeline. It showcases modern web development practices and provides a complete shopping experience.
-
-**Key Features:**
-- Product catalog with filtering, search, and sorting
-- Shopping cart with persistent storage
-- Product variants (size, color, etc.)
-- Checkout flow with order tracking
-- Dark mode support
-- Fully responsive design
-- End-to-end testing with Playwright
-- Docker containerization
-- Deployed on Cloudflare Pages
+- **GitHub**: [CROW-B3/rogue-store](https://github.com/CROW-B3/rogue-store)
+- **Live Demo**: [rogue.crowai.dev](https://rogue.crowai.dev)
+- **Docker Hub**: [bitbybitb3/rogue-store](https://hub.docker.com/r/bitbybitb3/rogue-store)
 
 ## Tech Stack
 
-- **Next.js 15**: App Router, React 19, TypeScript
-- **Tailwind CSS v4**: Styling and design system
-- **Radix UI**: Accessible component primitives
-- **Zustand**: State management
-- **Framer Motion**: Animations and transitions
-- **Playwright**: End-to-end testing
-- **Cloudflare Pages**: Deployment platform
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 15 (App Router), React 19, TypeScript |
+| Styling | Tailwind CSS v4 |
+| UI Primitives | Radix UI |
+| State Management | Zustand |
+| Animations | Framer Motion |
+| Testing | Playwright (E2E) |
+| Deployment | Cloudflare Pages |
 
-## Getting Started
+## Quick Start
 
-### Using Docker
+### Docker (recommended for demos)
 
 ```bash
 docker run -p 3000:3000 bitbybitb3/rogue-store:latest
 ```
-
-Docker Hub: [bitbybitb3/rogue-store](https://hub.docker.com/r/bitbybitb3/rogue-store)
 
 ### Local Development
 
@@ -46,51 +39,50 @@ pnpm install
 pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the application.
+Open [http://localhost:3000](http://localhost:3000).
+
+## Project Structure
+
+```
+rogue-store/
+├── app/               # Next.js pages
+├── components/
+│   ├── cart/          # Cart components
+│   ├── layout/        # Layout components
+│   ├── product/       # Product components
+│   └── ui/            # UI primitives
+├── data/              # Static product catalogue
+├── lib/               # Utilities & state management
+└── tests/             # Playwright E2E tests
+```
 
 ## Available Scripts
 
-- `pnpm run dev` - Start development server
-- `pnpm run build` - Build for production
-- `pnpm run test` - Run Playwright tests
-- `pnpm run deploy` - Deploy to Cloudflare Pages
+| Command | Description |
+|---|---|
+| `pnpm run dev` | Start development server |
+| `pnpm run build` | Build for production |
+| `pnpm run lint` | Run ESLint |
+| `pnpm run format` | Format with Prettier |
+| `pnpm run test` | Run Playwright tests |
+| `pnpm run test:ui` | Run tests in interactive UI mode |
+| `pnpm run deploy` | Deploy to Cloudflare Pages |
 
 ## Features
 
-### Product Catalog
-
-Browse and search through a complete product catalog:
-- Category filtering
-- Search functionality
-- Sorting options
-- Product variants (sizes, colors)
-- Product detail pages
+### Product Catalogue
+- Category filtering, search, and sorting
+- Product detail pages with variants (size, colour)
 
 ### Shopping Cart
-
-Persistent shopping cart with:
-- Add/remove items
-- Update quantities
-- Variant selection
-- Cart persistence across sessions
-- Real-time price calculations
+- Persistent cart across sessions (Zustand + localStorage)
+- Add/remove items, update quantities, real-time price calculations
 
 ### Checkout Flow
+- Order summary, customer information, and order confirmation
 
-Complete checkout process:
-- Order summary
-- Customer information
-- Order confirmation
-- Order tracking
-
-### User Experience
-
-Enhanced user experience features:
-- Dark mode toggle
-- Responsive design for all devices
-- Smooth animations with Framer Motion
-- Accessible components with Radix UI
-- Loading states and error handling
+### CROW-B3 Integration
+The store integrates with the [Website Hook SDK](./website-hook-sdk.md) to demonstrate end-to-end interaction tracking. Every page view, product click, add-to-cart, and checkout event is captured and sent to the CROW analytics pipeline, providing a realistic dataset for testing and validation.
 
 ## Deployment
 
@@ -103,7 +95,7 @@ pnpm run deploy
 
 ### Vercel
 
-Deploy to Vercel with one click: [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/CROW-B3/rogue-store)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/CROW-B3/rogue-store)
 
 ### Docker
 
@@ -111,24 +103,3 @@ Deploy to Vercel with one click: [![Deploy with Vercel](https://vercel.com/butto
 docker build -t rogue-store .
 docker run -p 3000:3000 rogue-store
 ```
-
-## Testing
-
-End-to-end testing with Playwright. Use `pnpm run test` to run all tests or `pnpm run test:ui` for interactive mode.
-
-## CROW-B3 Integration
-
-Rogue Store integrates with the CROW-B3 tracking SDK to demonstrate user interaction tracking, event capture, analytics pipeline integration, and real-time data collection.
-
-## Resources
-
-- **Repository**: [GitHub](https://github.com/CROW-B3/rogue-store)
-- **Docker Hub**: [bitbybitb3/rogue-store](https://hub.docker.com/r/bitbybitb3/rogue-store)
-- **License**: Private and proprietary
-
-## Contributing
-
-This is a demonstration project. For questions or issues:
-- Check the [GitHub Issues](https://github.com/CROW-B3/rogue-store/issues)
-- Review the documentation
-- Contact the CROW-B3 team
