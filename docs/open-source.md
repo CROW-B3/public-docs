@@ -9,11 +9,11 @@ title: Source Availability
 CROW is provided **as-is, without warranty or guaranteed support**. The project is not actively maintained — there are no scheduled updates, bug fixes, or security patches. Use at your own risk. Community contributions are welcome but not guaranteed to be reviewed or merged.
 :::
 
-The entire CROW platform is **source-available**. Every microservice, client application, SDK, CLI tool, and AI protocol server is available for you to inspect, use, fork, and self-host.
+The entire CROW platform is **source-available**. Every microservice, client application, SDK, CLI tool, starter template, and AI protocol server is available for you to inspect, use, fork, and self-host.
 
 ## The Full Platform
 
-CROW consists of 20+ deployable services, all built on **Cloudflare Workers** (many fit within the free tier):
+CROW consists of the production platform plus reusable starter repos, docs sites, and internal tooling, with the deployable services built on **Cloudflare Workers**:
 
 | Category | Services | Tech |
 |----------|----------|------|
@@ -24,11 +24,14 @@ CROW consists of 20+ deployable services, all built on **Cloudflare Workers** (m
 | **BFF Services** | `bff-chat-service`, `bff-qna-service` | Workers AI (Llama 3.3 70B), AI Gateway |
 | **Ingestion** | `web-ingest-service`, `cctv-ingest-service` | Durable Objects, Queues, Workers AI |
 | **Infrastructure** | `infra-crawl-service` | Workers Containers, Puppeteer |
-| **Frontend Clients** | `dashboard-client`, `auth-client`, `landing-client` | Next.js 15, OpenNext, React 19 |
+| **Frontend Clients** | `dashboard-client`, `auth-client`, `landing-client` | Next.js 15, Astro 5, Preact, OpenNext, `@astrojs/cloudflare` |
 | **Demo App** | `rogue-store` | Next.js 15, Tailwind CSS v4 |
 | **CLI Tools** | `cctv-cli` | Node.js, RTSP frame capture |
 | **SDKs** | `website-hook-sdk` | TypeScript, auto-instrumentation |
 | **Component Library** | `ui-kit` | React, Framer Motion, Tailwind CSS v4 |
+| **Starter Templates** | `cloudflare-opennext-nextjs-template`, `cloudflare-workers-containers-hono-template`, `cloudflare-workers-containers-python-template`, `cloudflare-workers-containers-go-template`, `npm-sdk-template` | Next.js, Hono, Python, Go, Workers Containers |
+| **Developer Tooling** | `local-dev` | Bun, GitHub workflow automation, workspace cleanup |
+| **Content Sites** | `blog.crowai.dev` | Astro, MDX, Tailwind CSS |
 
 ## Self-Hosting
 
@@ -36,20 +39,25 @@ All services deploy to Cloudflare Workers. To self-host:
 
 **Prerequisites:**
 - Cloudflare account (free tier works for most services)
-- Node.js 18+ and Wrangler CLI (`npm install -g wrangler`)
+- Bun 1.x for most repos, Node.js 20+ where required, and Wrangler CLI (`npm install -g wrangler`)
 - `wrangler login` to authenticate
 
 **Steps:**
-1. Clone the repository
+1. Bootstrap the workspace with `local-dev` or clone individual repositories
 2. For each service, configure `wrangler.jsonc` with your Cloudflare account details
 3. Create D1 databases: `npx wrangler d1 create <db-name>`
 4. Run migrations: `npx wrangler d1 migrations apply <db-name>`
 5. Set secrets: `npx wrangler secret put <SECRET_NAME>`
 6. Deploy: `npx wrangler deploy`
 
-For Next.js clients (dashboard, auth):
+For Next.js clients (`dashboard-client`, `auth-client`, `rogue-store`):
 ```bash
 npx next build && npx opennextjs-cloudflare build && npx wrangler deploy
+```
+
+For the Astro landing site:
+```bash
+bun run build && npx wrangler deploy
 ```
 
 See the **internal-docs** for detailed deployment guides covering Workers Containers, Durable Objects, Queue topology, and domain configuration.
@@ -66,8 +74,8 @@ See the **internal-docs** for detailed deployment guides covering Workers Contai
 | **AI Inference** | Cloudflare Workers AI (Llama 3.3 70B), AI Gateway |
 | **Auth** | Better Auth (email + Google OAuth) |
 | **Payments** | Stripe (Checkout, Portal, Webhooks) |
-| **Frontend** | Next.js 15, React 19, Tailwind CSS v4 |
-| **Hosting** | OpenNext for Cloudflare |
+| **Frontend** | Next.js 15, Astro 5, React 19, Preact, Tailwind CSS v4 |
+| **Hosting** | OpenNext for Cloudflare, `@astrojs/cloudflare`, Cloudflare Workers |
 | **Protocols** | MCP (Model Context Protocol), A2A (Agent-to-Agent) |
 
 ## NPM Packages
@@ -148,6 +156,22 @@ A template repository for creating NPM packages with TypeScript, ESLint, Prettie
 **Resources:**
 - **GitHub Repository**: [CROW-B3/npm-sdk-template](https://github.com/CROW-B3/npm-sdk-template)
 - **License**: MIT
+- **[Full Documentation](./npm-sdk-template.md)**
+
+### Cloudflare Workers Containers Go Template
+
+A starter for building Go services behind Cloudflare Workers Containers, with a TypeScript edge worker handling routing and container lifecycle.
+
+**Features:**
+- Go HTTP server in `container_src/main.go`
+- Cloudflare Workers Containers via `@cloudflare/containers`
+- Durable Object-backed container instances
+- Sample endpoints for per-ID containers, load balancing, singleton access, and error handling
+
+**Resources:**
+- **GitHub Repository**: [CROW-B3/cloudflare-workers-containers-go-template](https://github.com/CROW-B3/cloudflare-workers-containers-go-template)
+- **License**: MIT
+- **[Full Documentation](./cloudflare-workers-containers-go-template.md)**
 
 ### Local Dev
 
@@ -169,6 +193,7 @@ bun run clone
 
 **Resources:**
 - **GitHub Repository**: [CROW-B3/local-dev](https://github.com/CROW-B3/local-dev)
+- **[Full Documentation](./local-dev.md)**
 
 ## Demo Applications
 
@@ -210,7 +235,7 @@ pnpm run dev
 - **Docker Hub**: [bitbybitb3/rogue-store](https://hub.docker.com/r/bitbybitb3/rogue-store)
 - **Live Demo**: Check repository for deployment URL
 
-### Web Ingest Worker
+### Web Ingest Service
 
 A Cloudflare Worker that receives and processes events from the website-hook-sdk.
 
@@ -222,7 +247,7 @@ A Cloudflare Worker that receives and processes events from the website-hook-sdk
 - Low latency global distribution
 
 **Resources:**
-- **GitHub Repository**: [CROW-B3/web-ingest-worker](https://github.com/CROW-B3/web-ingest-worker)
+- **GitHub Repository**: [CROW-B3/web-ingest-service](https://github.com/CROW-B3/web-ingest-service)
 - **Blog Post**: [Website Hook SDK Evolution](https://blog.crowai.dev/website-hook-sdk-evolution)
 
 ## Contributing

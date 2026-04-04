@@ -158,7 +158,7 @@ CROW is source-available. You can deploy the entire platform on your own Cloudfl
 
 **What you need:**
 - Cloudflare account (free tier works for most services)
-- Node.js 18+ and Wrangler CLI
+- Bun 1.x for most CROW repos, plus Node.js 20+ and Wrangler CLI where needed
 - Stripe account (for billing features, optional)
 
 **Quick start:**
@@ -175,7 +175,7 @@ npx wrangler secret put INTERNAL_GATEWAY_KEY
 npx wrangler deploy
 ```
 
-See [Source Availability](./open-source.md) for the full platform architecture and component listing.
+See [Local Dev](./local-dev.md) for the multi-repo workflow and [Source Availability](./open-source.md) for the full platform architecture and component listing.
 
 :::caution
 CROW is not actively maintained. If you self-host, you are responsible for your own security, updates, and operations.
